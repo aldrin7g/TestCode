@@ -1,0 +1,29 @@
+function Decoder(bytes, port) {
+    var address = bytes[0];
+    var data1 = bytes[1];
+    var data2 = bytes[2];
+    var data3 = bytes[3];
+    var value = (data1 * 100) + (data2*10) + data3;
+    
+    var result = { Address: address, field1: address, field2: data1, field3: data2, field4: data3, field5: value };
+    
+    if (data1 === 1) {
+        result.Elephant = "Alert!";
+    } else if (data1 === 0) {
+        result.Elephant = "-";
+    }
+    
+    if (data2 === 1) {
+        result.Cheetah = "Alert!";
+    } else if (data2 === 0) {
+        result.Cheetah = "-";
+    }
+    
+    if (data3 === 1) {
+        result.Dog = "Alert!";
+    } else if (data3 === 0) {
+        result.Dog = "-";
+    }
+    
+    return result;
+}
